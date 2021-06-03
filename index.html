@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+
+
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="http://info.template-help.com/files/ie6_warning/ie6_script_other.js"></script>
+<script type="text/javascript" src="js/html5.js"></script>
+<![endif]-->
+
+<style>
+#more {display: none;}
+#more1 {display: none;}
+#more2 {display: none;}
+</style>
+
+<script>
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+</script>
+<script>
+function myFunction1() {
+  var dots = document.getElementById("dots1");
+  var moreText = document.getElementById("more1");
+  var btnText = document.getElementById("myBtn1");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+</script>
+<script>
+function myFunction2() {
+  var dots = document.getElementById("dots2");
+  var moreText = document.getElementById("more2");
+  var btnText = document.getElementById("myBtn2");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+</script>
+
+</head>
+<body id="page1">
+<div class="body1">
+	<div class="body2">
+		<div class="main">
+<!-- header -->
+			<header>
+				<div class="wrapper">
+					<h1><a href="index.html" id="logo">augmented reality in medical surgey</a></h1>
+					<form id="search" method="post">
+						<div>
+						<br>
+							<input type="hidden" class="submit" value="">
+							<input type="hidden" class="input">
+						</div>
+					</form>
+				</div>
+				<div class="wrapper">
+					<nav>
+						<ul id="menu">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="Researches.html">Team</a></li>
+							<li><a href="Pub.html">Publications</a></li>
+							<li><a href="Demo.html">Support</a></li>
+							<li><a href="Contacts.html">Contacts</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="wrapper">
+					<div class="col">
+						<h2> Augmented Reality Project 
+						<p style="font-size:28px;line-height:1.2em;color:#008cdd;display:block;margin-top:-2px;letter-spacing:0; text-align: justify;"> In the medical surgery </p>
+						</h2>
+						<p class="pad_bot1"  style="text-align: justify;">
+						<strong>Augmented Reality technology (AR) </strong> 
+						Offers innovative ways to visualize and manipulate 3D data 
+						of an object by superimposing computer-generated images into another object interactively. 
+						The ability to interact with digital and spatial information in real-time offers new opportunities 
+						to manipulate, visualize and process medical data with more ease and efficiency. </p>
+					</div>
+				</div>
+			</header>
+<!-- / header -->
+<!-- content -->
+			<section id="content">
+				<article class="col1">
+				<br>
+						
+					<h3>Partners</h3>
+					<div class="wrapper">
+						<figure class="left marg_right1"><a href="#"><img src="images/chu2.jpg" alt=""></a></figure>
+						<p style="font-size:14px;">
+							<strong> Sahloul Hospital of Sousse </strong><br>
+							<input type="button" onclick="myFunction()" value="Read more" id="myBtn">
+							<p style="text-align: justify; font-size:11px;"> <span id="dots"></span><span id="more">The Sahloul hospital is a public 
+							health establishment and a Tunisian university hospital center located in Sousse.
+							The main activity of the Sahloul University Hospital is to provide care as well as 
+							to ensure prevention, education and research in the medical and health fields.</span> </p>
+						</p>
+					</div>
+					<div class="wrapper">
+						<figure class="left marg_right1"><a href="#"><img src="images/us2.jpg" alt=""></a></figure>
+						<p style="font-size:14px;">
+							<strong> University of Sousse</strong>
+							<input type="button" onclick="myFunction1()" value="Read more" id="myBtn1">
+							<p style="text-align: justify; font-size:11px;"> <span id="dots1"></span><span id="more1">
+							The University of Sousse is a public academic organization that offers bachelor's, master's 
+							and doctorate training programs in four families of disciplines namely humanities, social sciences, 
+							engineering and technology and health sciences.
+						</span></p>
+					</div>
+					<div class="wrapper">
+						<figure class="left marg_right1"><a href="#"><img src="images/issat2.jpg" alt=""></a></figure>
+						<p style="font-size:14px;">
+							<strong>ISSAT Sousse</strong><br>
+						    <input type="button" onclick="myFunction2()" value="Read more" id="myBtn2">
+							<p style="text-align: justify; font-size:11px;"> <span id="dots2"></span><span id="more2">
+							The Higher Institute of Applied Sciences and Technology of Sousse is a scientific institute under the University of Sousse (Tunisia)
+							It offers training in the fields of computing, electronics, energy and mechanics. The mission of the ISSAT is also to train computer engineers and multidisciplinary research Masters.
+						</span></p>
+					</div>
+				</article>
+				<article class="col2">
+					<h3>Augmented Reality Surgey!</h3>
+					<p class="pad_bot2" style="text-align: justify;">
+						During surgical procedures, surgeons face various challenges dealing with the computerized patient data...</br>
+						Several techniques are used to visualize the operative areas such as fluoroscopy and ultrasound.
+						These techniques have several limitations. 
+						As consequence, Augmented Reality could serve as a better alternative that can project three-dimensional models of the target organ into the surgeon’s perspective and field of view, in order to improve the accuracy and efficiency of the medical intervention.
+					</p>
+					<div class="wrapper pad_bot1">
+						<figure class="left marg_right1"><img src="images/ar1.jpg" alt=""></figure>
+						<p class="pad_bot2"  style="text-align: justify;">
+							AR-based approach with the integration of a tracking system could be developed to generate superimposed images of the human organ intraoperatively in real-time. </br>
+							Surgeons will be able to visualize a computer-generated digital representation of the organ and interact with it accordingly.
+						</p>
+					</div>
+					<p  style="text-align: justify;">
+						This AR project introduce an ambitious alternative solution,  to mitigate surgery issues and guide the surgeon to have improved diagnosis and decision making during constrained surgical operations by offering a wider and global visual representation of the organ.
+					</p>
+				</article>
+			</section>
+		</div>
+	</div>
+</div>
+<div class="body3">
+	<div class="main">
+			<section id="content2">
+				
+			</section>
+
+	<!-- / content -->
+	<!-- footer -->
+	<footer>
+		<nav>
+		
+		</nav>
+		<div class="pad">
+				Copyright by project team<br>
+				
+			</div>
+	</footer>
+	<!-- / footer -->
+</div>
+</div>
+</body>
+</html>
