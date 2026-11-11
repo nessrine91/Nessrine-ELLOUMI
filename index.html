@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nessrine ELLOUMI</title>
+<meta name="description" content="Nessrine ELLOUMI — Docteure en informatique. Imagerie 3D, qualité perceptuelle, réalité augmentée médicale. / PhD in Computer Science — 3D imaging, perceptual quality, medical AR.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#ffffff; --surface-2:#efece4; --ink:#1b2230; --muted:#5d6472;
+  --line:#e2ddd2; --accent:#0f6b6b; --accent-ink:#ffffff; --accent-soft:#dcefed; --warm:#b4532a;
+  --shadow:0 1px 2px rgba(20,25,35,.05),0 8px 24px rgba(20,25,35,.06);
+  --radius:14px; --maxw:1080px;
+}
+:root[data-theme="dark"]{
+  --bg:#11151c; --surface:#181e27; --surface-2:#1f2631; --ink:#e8e6e1; --muted:#a2a8b3;
+  --line:#2a323f; --accent:#5cc2bd; --accent-ink:#0b1414; --accent-soft:#1b3433; --warm:#e38b62;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11151c; --surface:#181e27; --surface-2:#1f2631; --ink:#e8e6e1; --muted:#a2a8b3;
+    --line:#2a323f; --accent:#5cc2bd; --accent-ink:#0b1414; --accent-soft:#1b3433; --warm:#e38b62;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.2;margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+
+/* language switching */
+html[data-lang="fr"] [data-l="en"], html[data-lang="en"] [data-l="fr"]{display:none !important}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.brand{font-family:Fraunces,serif;font-weight:600;font-size:1.15rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand span{color:var(--accent)}
+nav.menu{margin-left:auto}
+nav.menu ul{list-style:none;display:flex;gap:4px;margin:0;padding:0}
+nav.menu a{display:block;padding:8px 10px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500}
+nav.menu a:hover,nav.menu a.active{color:var(--ink);background:var(--surface-2)}
+.tools{display:flex;gap:6px;align-items:center}
+.btn-icon{height:36px;min-width:36px;padding:0 10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:9px;cursor:pointer;font:600 .8rem Inter,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn-icon:hover{border-color:var(--accent)}
+.lang-switch{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--surface)}
+.lang-switch button{border:0;background:transparent;color:var(--muted);font:600 .8rem Inter,sans-serif;padding:0 10px;height:34px;cursor:pointer}
+.lang-switch button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.burger{display:none}
+@media (max-width:920px){
+  .burger{display:inline-flex}
+  nav.menu{position:fixed;inset:64px 0 auto 0;background:var(--bg);border-bottom:1px solid var(--line);display:none;margin:0}
+  nav.menu.open{display:block}
+  nav.menu ul{flex-direction:column;padding:8px 16px 16px}
+  nav.menu a{padding:12px;font-size:1rem}
+  .tools{margin-left:auto}
+}
+
+/* hero */
+.hero{padding:72px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:1.4fr .9fr;gap:48px;align-items:center}
+.eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.hero h1{font-size:clamp(2.3rem,5vw,3.6rem);letter-spacing:-.01em}
+.hero .role{font-size:1.15rem;color:var(--muted);margin:14px 0 22px;max-width:36em}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:18px;height:18px}
+.profiles{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.profiles a{font-size:.85rem;font-weight:500;color:var(--muted);text-decoration:none;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.profiles a:hover{color:var(--accent);border-color:var(--accent)}
+.portrait{position:relative;justify-self:center;width:240px}
+.portrait img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;box-shadow:var(--shadow);background:var(--surface-2);border:4px solid var(--surface)}
+.portrait::before{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px solid var(--accent);border-radius:18px;z-index:-1;opacity:.55}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+.stat b{display:block;font-family:Fraunces,serif;font-size:1.8rem;font-weight:600;color:var(--accent);line-height:1.1}
+.stat span{font-size:.85rem;color:var(--muted)}
+@media (max-width:820px){
+  .hero{padding:40px 0}
+  .hero .wrap{grid-template-columns:1fr;gap:32px}
+  .portrait{order:-1;width:160px;justify-self:start;margin-left:9px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+
+/* sections */
+section.block{padding:64px 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head .num{font:600 .85rem Inter,sans-serif;color:var(--warm)}
+.sec-head h2{font-size:clamp(1.6rem,3vw,2.1rem)}
+.lead{font-size:1.05rem;color:var(--muted);max-width:46em;margin:0 0 24px}
+/* justified body text */
+p,.list li,.facts dd{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
+.pub .authors,.pub .venue,.stat span{text-align:left;hyphens:manual}
+.grid-2{display:grid;grid-template-columns:1.5fr 1fr;gap:32px}
+@media (max-width:820px){.grid-2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.facts{margin:0;display:grid;gap:12px}
+.facts div{display:grid;grid-template-columns:110px 1fr;gap:10px;font-size:.93rem}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;overflow-wrap:anywhere}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.85rem;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--ink)}
+.chip.plain{background:var(--surface-2)}
+h3.sub{font-size:1.15rem;margin:0 0 14px}
+
+/* research */
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.cards-3{grid-template-columns:1fr}}
+.card .tag{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--warm)}
+.card h3{font-size:1.1rem;margin:8px 0}
+.card p{margin:0;color:var(--muted);font-size:.93rem}
+.card .more{display:inline-block;margin-top:12px;font-weight:600;font-size:.9rem}
+
+/* publications */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filters button{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:8px 14px;border-radius:999px;font:600 .85rem Inter,sans-serif;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pubs{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.pub{display:grid;grid-template-columns:64px 1fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+.pub .yr{font-family:Fraunces,serif;font-size:1.25rem;font-weight:600;color:var(--accent)}
+.pub .kind{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pub h3{font-family:Inter,sans-serif;font-size:1rem;font-weight:600;line-height:1.45;margin:0 0 6px}
+.pub .authors{font-size:.88rem;color:var(--muted);margin:0}
+.pub .authors b{color:var(--ink);font-weight:600}
+.pub .venue{font-size:.88rem;font-style:italic;margin:4px 0 10px}
+.pub .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.badge{font-size:.75rem;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--surface-2);color:var(--muted)}
+.pub a.read{margin-left:auto;font-size:.88rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.pub a.read:hover{text-decoration:underline}
+@media (max-width:600px){
+  .pub{grid-template-columns:1fr;gap:6px;padding:16px}
+  .pub .yr{display:flex;align-items:baseline;gap:10px}
+  .pub a.read{margin-left:0}
+}
+
+/* timeline */
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline li{position:relative;padding:0 0 26px 34px}
+.timeline li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.timeline .when{font-size:.82rem;font-weight:600;color:var(--warm)}
+.timeline h3{font-family:Inter,sans-serif;font-size:1.02rem;font-weight:600;margin:2px 0 4px}
+.timeline p{margin:0;color:var(--muted);font-size:.92rem}
+
+/* lists */
+.list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.list li{font-size:.93rem;padding-left:18px;position:relative}
+.list li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--accent)}
+.list .d{color:var(--muted)}
+details.more-list{margin-top:14px}
+details.more-list summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:.9rem}
+details.more-list ul{margin-top:12px}
+.stack{display:grid;gap:16px}
+
+/* refs */
+.refs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:900px){.refs{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.refs{grid-template-columns:1fr}}
+.ref h3{font-family:Inter,sans-serif;font-size:1rem;font-weight:600;margin:0 0 4px}
+.ref p{margin:0;font-size:.88rem;color:var(--muted)}
+
+/* contact */
+.contact{background:var(--ink);color:var(--bg);border-radius:22px;padding:40px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.contact h2{font-size:clamp(1.6rem,3vw,2.2rem)}
+.contact p{opacity:.8;margin:10px 0 0}
+.contact a{color:var(--bg)}
+.contact .lines{display:grid;gap:10px;font-size:.95rem}
+.contact .lines a{overflow-wrap:anywhere}
+@media (max-width:760px){.contact{grid-template-columns:1fr;padding:28px 22px}}
+footer{padding:32px 0 40px;color:var(--muted);font-size:.85rem;text-align:center}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.no-js .reveal{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">N<span>.</span> Elloumi</a>
+    <nav class="menu" id="menu" aria-label="Navigation">
+      <ul>
+        <li><a href="#about"><span data-l="fr">À propos</span><span data-l="en">About</span></a></li>
+        <li><a href="#research"><span data-l="fr">Recherche</span><span data-l="en">Research</span></a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#teaching"><span data-l="fr">Enseignement</span><span data-l="en">Teaching</span></a></li>
+        <li><a href="#education"><span data-l="fr">Parcours</span><span data-l="en">Education</span></a></li>
+        <li><a href="#service"><span data-l="fr">Activités</span><span data-l="en">Service</span></a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="tools">
+      <div class="lang-switch" role="group" aria-label="Langue / Language">
+        <button type="button" data-set-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="btn-icon" id="themeBtn" type="button" aria-label="Thème / Theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="btn-icon burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><span data-l="fr">Docteure-Ingénieure en informatique</span><span data-l="en">PhD &amp; Engineer in Computer Science</span></span>
+      <h1>Nessrine ELLOUMI</h1>
+      <p class="role">
+        <span data-l="fr">Maître assistante à l'ISSAT Sousse. Imagerie 3D, évaluation de la qualité perceptuelle des images 2D/3D, reconstruction et traitement des modèles 3D, application de la réalité augmentée à la chirurgie médicale ouverte, intégration et développement de modèles d'intelligence artificielle pour la détection, la segmentation et la classification des images médicales.</span>
+        <span data-l="en">Assistant Professor at ISSAT Sousse. 3D imaging, perceptual quality assessment of 2D/3D images, 3D model reconstruction and processing, augmented reality for open medical surgery, and the integration and development of artificial intelligence models for the detection, segmentation and classification of medical images.</span>
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#publications">
+          <span data-l="fr">Voir les publications</span><span data-l="en">See publications</span>
+        </a>
+        <a class="btn" href="cv-elloumi-nessrine-fr.pdf" data-l="fr" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+          <span data-l="fr">Télécharger le CV</span><span data-l="en">Download CV</span>
+        </a>
+        <a class="btn" href="cv-elloumi-nessrine-En.pdf" data-l="en" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+          <span data-l="fr">Télécharger le CV</span><span data-l="en">Download CV</span>
+        </a>
+      </div>
+      <div class="profiles">
+        <a href="https://scholar.google.com/citations?user=4HZqEK0AAAAJ&amp;hl=fr" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/0000-0002-6865-0769" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://www.scopus.com/authid/detail.uri?authorId=57212668887" target="_blank" rel="noopener">Scopus</a>
+        <a href="https://www.researchgate.net/profile/Nessrine-Elloumi" target="_blank" rel="noopener">ResearchGate</a>
+        <a href="https://www.linkedin.com/in/nessrine-elloumi-9aa16158/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="portrait"><img src="nessrine-2026-sq360.jpg" alt="Nessrine ELLOUMI" width="360" height="360" decoding="async"></div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>7</b><span data-l="fr">articles de revues indexées Scopus</span><span data-l="en">Scopus-indexed journal articles</span></div>
+      <div class="stat"><b>9</b><span data-l="fr">communications internationales</span><span data-l="en">international conference papers</span></div>
+      <div class="stat"><b>2021</b><span data-l="fr">Doctorat, mention Très Honorable</span><span data-l="en">PhD, highest honours</span></div>
+      <div class="stat"><b>2018</b><span data-l="fr">enseigne depuis, dans 5 établissements</span><span data-l="en">teaching since, at 5 institutions</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="sec-head"><h2><span data-l="fr">À propos</span><span data-l="en">About</span></h2></div>
+    <div class="grid-2">
+      <div class="reveal">
+        <div data-l="fr">
+          <p>Actuellement Maître assistante à l'Institut Supérieur des Sciences Appliquées et de Technologie de Sousse (ISSAT Sousse) depuis 2025, et membre du laboratoire de recherche SETIT (Systèmes intelligents pour l'Ingénierie et la E-santé basés sur les Technologies de l'Image et des Télécommunications), Université de Sfax.</p>
+          <p>J'ai obtenu mon doctorat en informatique en 2021 à l'ISITCom Hammam Sousse (Université de Sousse) et mon diplôme d'ingénieure en technologie web et multimédia en 2015 à l'ISIMS de Sfax.</p>
+          <p>Mes travaux portent sur l'imagerie 3D, l'infographie 3D, la CAO, le traitement et la modélisation de formes 3D, la perception visuelle et l'évaluation de la qualité perceptuelle des maillages déformés. Je m'intéresse en particulier aux mesures objectives 3D de la distorsion géométrique des modèles reconstruits : prothèses médicales, réalité augmentée, fabrication additive, impression 3D.</p>
+        </div>
+        <div data-l="en">
+          <p>Since 2025, I have been an Assistant Professor at the Higher Institute of Applied Sciences and Technology of Sousse (ISSAT Sousse), and a member of the SETIT research lab (Intelligent Systems for Engineering and e-Health based on Image and Telecommunication Technologies), University of Sfax.</p>
+          <p>I received my PhD in Computer Science in 2021 from ISITCom Hammam Sousse (University of Sousse), and my engineering degree in Web and Multimedia Technology in 2015 from ISIMS, Sfax.</p>
+          <p>My research covers 3D imaging, 3D computer graphics, CAD, 3D shape processing and modelling, visual perception and perceptual quality assessment of deformed meshes. I focus on objective 3D metrics for measuring geometric distortion in reconstructed models used in medical prostheses, augmented reality, additive manufacturing and 3D printing.</p>
+        </div>
+        <h3 class="sub" style="margin-top:26px"><span data-l="fr">Compétences</span><span data-l="en">Skills</span></h3>
+        <div class="chips">
+          <span class="chip">MATLAB</span><span class="chip">Python</span><span class="chip">Deep Learning</span>
+          <span class="chip"><span data-l="fr">Traitement d'images</span><span data-l="en">Image processing</span></span>
+          <span class="chip">Java EE</span><span class="chip">HTML · CSS · JavaScript · PHP</span>
+          <span class="chip">Cisco Packet Tracer</span><span class="chip">UML</span>
+          <span class="chip"><span data-l="fr">Méthodes agiles (Scrum)</span><span data-l="en">Agile (Scrum)</span></span>
+          <span class="chip">Illustrator · Photoshop</span>
+        </div>
+      </div>
+      <aside class="card reveal">
+        <dl class="facts">
+          <div><dt><span data-l="fr">Poste</span><span data-l="en">Position</span></dt><dd><span data-l="fr">Maître assistante, ISSAT Sousse (depuis 2025)</span><span data-l="en">Assistant Professor, ISSAT Sousse (since 2025)</span></dd></div>
+          <div><dt><span data-l="fr">Grade</span><span data-l="en">Degree</span></dt><dd><span data-l="fr">Docteure en sciences de l'informatique</span><span data-l="en">PhD in Computer Science</span></dd></div>
+          <div><dt><span data-l="fr">Laboratoire</span><span data-l="en">Lab</span></dt><dd><a href="http://www.setit.rnu.tn/" target="_blank" rel="noopener">LR SETIT</a>, <span data-l="fr">Université de Sfax</span><span data-l="en">University of Sfax</span></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:ellouminessrine@gmail.com">ellouminessrine@gmail.com</a></dd></div>
+          <div><dt>ORCID</dt><dd><a href="https://orcid.org/0000-0002-6865-0769" target="_blank" rel="noopener">0000-0002-6865-0769</a></dd></div>
+          <div><dt><span data-l="fr">Langues</span><span data-l="en">Languages</span></dt><dd><span data-l="fr">Arabe (langue maternelle), français (B2), anglais (B2)</span><span data-l="en">Arabic (native), French (B2), English (B2)</span></dd></div>
+          <div><dt><span data-l="fr">Ville</span><span data-l="en">Location</span></dt><dd><span data-l="fr">Sfax, Tunisie</span><span data-l="en">Sfax, Tunisia</span></dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="block" id="research">
+  <div class="wrap">
+    <div class="sec-head"><h2><span data-l="fr">Recherche</span><span data-l="en">Research</span></h2></div>
+    <div class="cards-3">
+      <article class="card reveal">
+        <span class="tag"><span data-l="fr">Axe 1</span><span data-l="en">Theme 1</span></span>
+        <h3><span data-l="fr">Qualité perceptuelle 3D</span><span data-l="en">3D perceptual quality</span></h3>
+        <p><span data-l="fr">Métriques objectives à référence complète pour les maillages 3D statiques déformés, fondées sur le système visuel humain (3DrwPSNR, loi de Weber).</span><span data-l="en">Full-reference objective metrics for deformed static 3D meshes, grounded in the human visual system (3DrwPSNR, Weber's law).</span></p>
+      </article>
+      <article class="card reveal">
+        <span class="tag"><span data-l="fr">Axe 2</span><span data-l="en">Theme 2</span></span>
+        <h3><span data-l="fr">Reconstruction CAO</span><span data-l="en">CAD reconstruction</span></h3>
+        <p><span data-l="fr">Passage d'une surface maillée à un modèle BREP, approximation de surfaces B-Spline et reconstruction de modèles CAO déformés.</span><span data-l="en">From meshed surfaces to BREP models, B-Spline surface approximation and reconstruction of deformed CAD models.</span></p>
+      </article>
+      <article class="card reveal">
+        <span class="tag"><span data-l="fr">Axe 3</span><span data-l="en">Theme 3</span></span>
+        <h3><span data-l="fr">Chirurgie augmentée</span><span data-l="en">Augmented surgery</span></h3>
+        <p><span data-l="fr">Segmentation d'images CT par apprentissage profond, modélisation biomécanique d'organes et projection en réalité augmentée ; orthèses imprimées en 3D.</span><span data-l="en">Deep-learning CT segmentation, biomechanical organ modelling and augmented-reality projection; 3D-printed orthoses.</span></p>
+      </article>
+    </div>
+
+    <h3 class="sub" style="margin-top:40px"><span data-l="fr">Projets et séjours</span><span data-l="en">Projects &amp; research stays</span></h3>
+    <div class="cards-3">
+      <article class="card reveal">
+        <span class="tag"><span data-l="fr">Projet</span><span data-l="en">Project</span></span>
+        <h3>Augmented Reality &amp; Additive Manufacturing in Medical Surgery</h3>
+        <p><span data-l="fr">En collaboration avec l'Hôpital Sahloul de Sousse et l'ISSAT Sousse.</span><span data-l="en">With Sahloul Hospital, Sousse, and ISSAT Sousse.</span></p>
+        <a class="more" href="https://am-g.tn/" target="_blank" rel="noopener"><span data-l="fr">Site du projet</span><span data-l="en">Project website</span> →</a>
+      </article>
+      <article class="card reveal">
+        <span class="tag"><span data-l="fr">Projet</span><span data-l="en">Project</span></span>
+        <h3>3DSPMed: From 3D Scan to Printed Medical Orthotic Device</h3>
+        <p><span data-l="fr">En collaboration avec l'Université islamique Imam Mohammad Ibn Saud (IMSIU), Arabie saoudite.</span><span data-l="en">With Imam Mohammad Ibn Saud Islamic University (IMSIU), Saudi Arabia.</span></p>
+      </article>
+      <article class="card reveal">
+        <span class="tag"><span data-l="fr">Séjour de recherche · 2019</span><span data-l="en">Research stay · 2019</span></span>
+        <h3><span data-l="fr">Centre SPIN, Mines Saint-Étienne (France)</span><span data-l="en">SPIN Center, Mines Saint-Étienne (France)</span></h3>
+        <p><span data-l="fr">Deux mois sous la direction du Pr Johan Debayle : mesure objective perceptuelle pour les maillages 3D statiques.</span><span data-l="en">Two months with Prof. Johan Debayle on objective perceptual metrics for static 3D meshes.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="block" id="publications">
+  <div class="wrap">
+    <div class="sec-head"><h2>Publications</h2></div>
+    <div class="filters" role="group" aria-label="Filtre">
+      <button type="button" data-filter="all" aria-pressed="true"><span data-l="fr">Toutes</span><span data-l="en">All</span> (16)</button>
+      <button type="button" data-filter="journal" aria-pressed="false"><span data-l="fr">Revues</span><span data-l="en">Journals</span> (7)</button>
+      <button type="button" data-filter="conf" aria-pressed="false"><span data-l="fr">Conférences</span><span data-l="en">Conferences</span> (9)</button>
+    </div>
+    <ol class="pubs" id="pubs">
+
+      <li class="pub" data-type="journal">
+        <div class="yr">2025</div>
+        <div>
+          <h3>A critical review of 3D printed orthoses towards workflow implementation in the clinical practice</h3>
+          <p class="authors">N. H. Alrasheedi, M. Tlija, <b>N. Elloumi</b>, B. Louhichi</p>
+          <p class="venue">Journal of Engineering Research (JER), Vol. 13, No. 2, pp. 1038–1051</p>
+          <div class="meta"><span class="badge">Scopus Q3</span><span class="badge">IF 1.0</span>
+            <a class="read" href="https://doi.org/10.1016/j.jer.2024.01.024" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="journal">
+        <div class="yr">2024</div>
+        <div>
+          <h3>Digital Twin Implementation in Additive Manufacturing: A Comprehensive Review</h3>
+          <p class="authors">S. Ben Amor, <b>N. Elloumi</b>, A. Eltaief, B. Louhichi, N. H. Alrasheedi, A. Seibi</p>
+          <p class="venue">Processes (MDPI), Vol. 12, No. 6, 1062</p>
+          <div class="meta"><span class="badge">Scopus</span><span class="badge">Open Access</span>
+            <a class="read" href="https://doi.org/10.3390/pr12061062" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="journal">
+        <div class="yr">2024</div>
+        <div>
+          <h3>Full-Reference Objective Quality Metric for Three-Dimensional Deformed Models</h3>
+          <p class="authors"><b>N. Elloumi</b>, H. Loukil, M. S. Bouhlel</p>
+          <p class="venue">International Journal of Image and Graphics (IJIG), Vol. 24, No. 01, 2450006</p>
+          <div class="meta"><span class="badge">Scopus Q3</span><span class="badge">IF 1.6</span>
+            <a class="read" href="https://www.worldscientific.com/doi/10.1142/S0219467824500062" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="journal">
+        <div class="yr">2024</div>
+        <div>
+          <h3>Enhancement of B-Spline surface rebuilding for deformed CAD model reconstruction</h3>
+          <p class="authors"><b>N. Elloumi</b>, A. Ben Makhlouf, N. M. Alshuqayran, B. Louhichi</p>
+          <p class="venue">International Journal of Modeling, Simulation, and Scientific Computing</p>
+          <div class="meta"><span class="badge">Scopus Q4</span><span class="badge">IF 1.2</span>
+            <a class="read" href="https://www.worldscientific.com/doi/10.1142/S1793962325500059" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="journal">
+        <div class="yr">2023</div>
+        <div>
+          <h3>Biomechanical modeling and simulation of a human organ using an Augmented Reality technique during open surgery</h3>
+          <p class="authors">A. Ben Makhlouf, <b>N. Elloumi</b>, B. Louhichi, M. Jaidane, N. H. Alrasheedi, K. Sandougah</p>
+          <p class="venue">International Journal of Modeling, Simulation, and Scientific Computing, Vol. 14, No. 05, 2350045</p>
+          <div class="meta"><span class="badge">Scopus Q4</span><span class="badge">IF 1.2</span>
+            <a class="read" href="https://doi.org/10.1142/S1793962323500459" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="journal">
+        <div class="yr">2023</div>
+        <div>
+          <h3>CT images segmentation using Deep learning approach for preoperative projection of human organ model using Augmented Reality technology</h3>
+          <p class="authors"><b>N. Elloumi</b>, A. Ben Makhlouf, A. Afli, B. Louhichi, M. Jaidane, J. M. R. S. Tavares</p>
+          <p class="venue">International Journal of Computational Intelligence and Applications, Vol. 22, No. 02, 2350006</p>
+          <div class="meta"><span class="badge">Scopus Q3</span><span class="badge">IF 1.8</span>
+            <a class="read" href="https://doi.org/10.1142/S1469026823500062" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="conf">
+        <div class="yr">2022</div>
+        <div>
+          <h3>Application of the Laplacian Smoothing on 3D Static Models and Their Evaluation by the New Objective Quality Metric 3DrwPSNR</h3>
+          <p class="authors"><b>N. Elloumi</b>, H. Loukil, M. S. Bouhlel</p>
+          <p class="venue">14th International Conference on Computational Collective Intelligence (ICCCI 2022), Hammamet, Tunisia</p>
+          <div class="meta"><span class="badge"><span data-l="fr">Classe B</span><span data-l="en">Class B</span></span>
+            <a class="read" href="https://link.springer.com/chapter/10.1007/978-3-031-16210-7_25" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="conf">
+        <div class="yr">2022</div>
+        <div>
+          <h3>Preoperative Image Segmentation for Organ Visualization Using Augmented Reality Technology During Open Liver Surgery</h3>
+          <p class="authors">A. Afli, <b>N. Elloumi</b>, A. Ben Makhlouf, B. Louhichi, M. Jaidane, J. M. R. S. Tavares</p>
+          <p class="venue">26th International Conference Information Visualisation (IV 2022), TU Wien, Austria</p>
+          <div class="meta"><span class="badge"><span data-l="fr">Classe B</span><span data-l="en">Class B</span></span>
+            <a class="read" href="https://doi.org/10.1109/IV56949.2022.00078" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="conf">
+        <div class="yr">2022</div>
+        <div>
+          <h3>Biomechanical Modeling and Pre-Operative Projection of a Human Organ Using an Augmented Reality Technique During Open Hepatic Surgery</h3>
+          <p class="authors">A. Ben Makhlouf, A. Ayed, <b>N. Elloumi</b>, B. Louhichi, M. Jaidane, J. M. R. S. Tavares</p>
+          <p class="venue">26th International Conference Information Visualisation (IV 2022), TU Wien, Austria</p>
+          <div class="meta"><span class="badge"><span data-l="fr">Classe B</span><span data-l="en">Class B</span></span>
+            <a class="read" href="https://doi.org/10.1109/IV56949.2022.00079" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="conf">
+        <div class="yr">2021</div>
+        <div>
+          <h3>Towards a building techniques of a BREP model starting from a meshed surface</h3>
+          <p class="authors"><b>N. Elloumi</b>, A. Ben Makhlouf, B. Louhichi, D. Deneux</p>
+          <p class="venue">ASME IDETC-CIE 2021 (International Design Engineering Technical Conferences &amp; Computers and Information in Engineering)</p>
+          <div class="meta"><span class="badge">Scopus</span>
+            <a class="read" href="https://asmedigitalcollection.asme.org/IDETC-CIE/proceedings-abstract/IDETC-CIE2021/V002T02A006/1128449" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="conf">
+        <div class="yr">2021</div>
+        <div>
+          <h3>Approach for CAD model reconstruction basing on 3D points insertion and surface approximation</h3>
+          <p class="authors">A. Ben Makhlouf, <b>N. Elloumi</b>, B. Louhichi, D. Deneux</p>
+          <p class="venue">25th International Conference Information Visualisation (IV 2021), University of Technology Sydney</p>
+          <div class="meta"><span class="badge"><span data-l="fr">Classe B</span><span data-l="en">Class B</span></span>
+            <a class="read" href="https://ieeexplore.ieee.org/abstract/document/9582715/" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="conf">
+        <div class="yr">2020</div>
+        <div>
+          <h3>A locally weighted metric for measuring the perceptual quality of 3D objects</h3>
+          <p class="authors"><b>N. Elloumi</b>, J. Debayle, H. Loukil, M. S. Bouhlel</p>
+          <p class="venue">Intelligent Systems Design and Applications (ISDA 2020)</p>
+          <div class="meta"><span class="badge"><span data-l="fr">Classe C</span><span data-l="en">Class C</span></span>
+            <a class="read" href="https://link.springer.com/chapter/10.1007/978-3-030-71187-0_12" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="conf">
+        <div class="yr">2018</div>
+        <div>
+          <h3>A comparative study of the 3D quality metrics: application to masking database</h3>
+          <p class="authors"><b>N. Elloumi</b>, H. Loukil, M. S. Bouhlel</p>
+          <p class="venue">Intelligent Systems Design and Applications (ISDA 2018), Vellore, India</p>
+          <div class="meta"><span class="badge"><span data-l="fr">Classe C</span><span data-l="en">Class C</span></span>
+            <a class="read" href="https://link.springer.com/chapter/10.1007/978-3-030-16660-1_72" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="conf">
+        <div class="yr">2018</div>
+        <div>
+          <h3>Quality Metric of 3D Models Using Weber's Law</h3>
+          <p class="authors"><b>N. Elloumi</b>, H. Loukil, M. S. Bouhlel</p>
+          <p class="venue">11th International Conference on Machine Vision (ICMV 2018), Munich, Germany</p>
+          <div class="meta"><span class="badge"><span data-l="fr">Classe C</span><span data-l="en">Class C</span></span>
+            <a class="read" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11041/110410B/Quality-metric-of-3D-models-using-Webers-Law/10.1117/12.2522846.short?SSO=1" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="journal">
+        <div class="yr">2017</div>
+        <div>
+          <h3>Perceptual Metrics Quality: Comparative Study for 3D Static Meshes</h3>
+          <p class="authors"><b>N. Elloumi</b>, H. Loukil Hadj Kacem, N. Dey, A. S. Ashour, M. S. Bouhlel</p>
+          <p class="venue">International Journal of Service Science, Management, Engineering, and Technology (IJSSMET), Vol. 8, No. 1, pp. 63–80</p>
+          <div class="meta"><span class="badge">Scopus</span>
+            <a class="read" href="https://www.igi-global.com/article/perceptual-metrics-quality/169752" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub" data-type="conf">
+        <div class="yr">2016</div>
+        <div>
+          <h3>The efficiency of perceptual quality metrics 3D meshes based on the human visual system</h3>
+          <p class="authors"><b>N. Elloumi</b>, H. Loukil, M. S. Bouhlel</p>
+          <p class="venue">7th International Workshop on Soft Computing Applications (SOFA 2016)</p>
+          <div class="meta"><span class="badge"><span data-l="fr">Classe C</span><span data-l="en">Class C</span></span>
+            <a class="read" href="https://link.springer.com/chapter/10.1007/978-3-319-62521-8_43" target="_blank" rel="noopener"><span data-l="fr">Lire l'article</span><span data-l="en">Read paper</span> ↗</a></div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section class="block" id="teaching">
+  <div class="wrap">
+    <div class="sec-head"><h2><span data-l="fr">Enseignement et encadrement</span><span data-l="en">Teaching &amp; supervision</span></h2></div>
+    <div class="grid-2">
+      <div class="reveal">
+        <ul class="timeline">
+          <li><span class="when"><span data-l="fr">Depuis 2025</span><span data-l="en">Since 2025</span></span>
+            <h3><span data-l="fr">Maître assistante · ISSAT Sousse</span><span data-l="en">Assistant Professor · ISSAT Sousse</span></h3>
+            <p><span data-l="fr">Intelligence artificielle, traitement d'images 2D, développement web, réseaux IP.</span><span data-l="en">Artificial intelligence, 2D image processing, web development, IP networks.</span></p></li>
+          <li><span class="when">2023 – 2024</span>
+            <h3><span data-l="fr">Assistante contractuelle · ISGI Sfax</span><span data-l="en">Contract Assistant Professor · ISGI Sfax</span></h3>
+            <p><span data-l="fr">Programmation et développement mobile, gestion de projet, réseaux locaux industriels, C2i, programmation web 2.</span><span data-l="en">Mobile programming and development, project management, industrial LANs, C2i, web programming 2.</span></p></li>
+          <li><span class="when">2022 – 2024</span>
+            <h3><span data-l="fr">Assistante vacataire · Enet'Com Sfax</span><span data-l="en">Adjunct Lecturer · Enet'Com Sfax</span></h3>
+            <p><span data-l="fr">Intelligence artificielle et machine learning, traitement d'images.</span><span data-l="en">Artificial intelligence and machine learning, image processing.</span></p></li>
+          <li><span class="when">2021 – 2023</span>
+            <h3><span data-l="fr">Assistante contractuelle · ISSAT Sousse</span><span data-l="en">Contract Assistant Professor · ISSAT Sousse</span></h3>
+            <p><span data-l="fr">Méthodologies de conception logicielle, test logiciel (préparation ISTQB), portails collaboratifs, algorithmique et structures de données, réseaux informatiques.</span><span data-l="en">Software design methodologies, software testing (ISTQB prep), collaborative portals, algorithms and data structures, computer networks.</span></p></li>
+          <li><span class="when">2019 – 2020</span>
+            <h3><span data-l="fr">Assistante contractuelle · Enet'Com Sfax</span><span data-l="en">Contract Assistant Professor · Enet'Com Sfax</span></h3>
+            <p><span data-l="fr">Transmission de données et protocoles, commutation et routage (CCNA 2), qualité de service IP, architecture des réseaux télécom.</span><span data-l="en">Data transmission and protocols, switching and routing (CCNA 2), IP quality of service, telecom network architecture.</span></p></li>
+          <li><span class="when">2018 – 2021</span>
+            <h3><span data-l="fr">Assistante vacataire · ISGI, ISBS, ISSAT, Enet'Com</span><span data-l="en">Adjunct Lecturer · ISGI, ISBS, ISSAT, Enet'Com</span></h3>
+            <p><span data-l="fr">Atelier réseaux, traitement numérique du signal médical, programmation web, traitement d'images.</span><span data-l="en">Networking lab, medical digital signal processing, web programming, image processing.</span></p></li>
+        </ul>
+      </div>
+      <div class="stack">
+        <div class="card reveal">
+          <h3 class="sub"><span data-l="fr">Encadrement</span><span data-l="en">Supervision</span></h3>
+          <ul class="list">
+            <li><b>1</b> <span data-l="fr">mastère de recherche (co-encadrement, 2021) : modélisation biomécanique et reconstruction 3D d'un organe pour la réalité augmentée en chirurgie ouverte</span><span data-l="en">research master's (co-supervised, 2021): biomechanical modelling and 3D organ reconstruction for AR in open surgery</span></li>
+            <li><b>6</b> <span data-l="fr">projets de fin d'études ingénieur (2023), dont une application de réalité augmentée pour l'affichage de champ magnétique</span><span data-l="en">engineering final-year projects (2023), including an AR app for magnetic-field visualisation</span></li>
+            <li><b>4</b> <span data-l="fr">projets de fin d'études licence (2022–2023), dont une plateforme de détection et de comptage de noyaux</span><span data-l="en">bachelor final-year projects (2022–2023), including a nucleus detection and counting platform</span></li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3 class="sub"><span data-l="fr">Animation de workshops</span><span data-l="en">Workshops delivered</span></h3>
+          <ul class="list">
+            <li><span data-l="fr">Simulation des réseaux intelligents, du concept à la pratique (IoT)</span><span data-l="en">Smart network simulation, from concept to practice (IoT)</span> <span class="d">· IIT Sfax, 2020 &amp; 2021</span></li>
+            <li>MATLAB Day <span class="d">· ISSAT Sousse, 2021</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="block" id="education">
+  <div class="wrap">
+    <div class="sec-head"><h2><span data-l="fr">Parcours universitaire</span><span data-l="en">Education</span></h2></div>
+    <ul class="timeline reveal">
+      <li><span class="when">2021</span>
+        <h3><span data-l="fr">Doctorat en sciences de l'informatique · ISITCom Hammam Sousse</span><span data-l="en">PhD in Computer Science · ISITCom Hammam Sousse</span></h3>
+        <p><span data-l="fr">« Étude et développement de métriques objectives pour mesurer la qualité perceptuelle des modèles 3D statiques ».<br>Direction : Pr Mohamed Salim Bouhlel ; co-encadrement : Dr Habiba Loukil. Soutenue le 30 avril 2021, mention Très Honorable.</span><span data-l="en">"Study and development of objective metrics to measure the perceptual quality of static 3D models".<br>Supervisor: Prof. Mohamed Salim Bouhlel; co-supervisor: Dr. Habiba Loukil. Defended 30 April 2021, highest honours.</span></p></li>
+      <li><span class="when">2015</span>
+        <h3><span data-l="fr">Diplôme d'ingénieure, technologie web et multimédia · ISIMS Sfax</span><span data-l="en">Engineering degree, Web &amp; Multimedia Technology · ISIMS Sfax</span></h3>
+        <p><span data-l="fr">Projet : adaptation des flux de données dans un ERP propriétaire. Mention Très Bien.</span><span data-l="en">Project: data-flow adaptation in a proprietary ERP. Graduated with high distinction.</span></p></li>
+      <li><span class="when">2014</span>
+        <h3><span data-l="fr">Mastère professionnel, réseaux et télécommunications · Enet'Com Sfax</span><span data-l="en">Professional Master's, Networks &amp; Telecommunications · Enet'Com Sfax</span></h3>
+        <p><span data-l="fr">Projet : application de mise en œuvre de l'audit MEHARI. Mention Très Bien.</span><span data-l="en">Project: an application implementing the MEHARI security audit. Graduated with high distinction.</span></p></li>
+      <li><span class="when">2013</span>
+        <h3><span data-l="fr">Licence appliquée, réseaux et services informatiques · ISET Sfax</span><span data-l="en">Applied Bachelor's, Networks &amp; IT Services · ISET Sfax</span></h3>
+        <p><span data-l="fr">Projet : analyse et affichage de données issues d'un réseau de capteurs. Mention Très Bien.</span><span data-l="en">Project: analysis and display of sensor-network data. Graduated with high distinction.</span></p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section class="block" id="service">
+  <div class="wrap">
+    <div class="sec-head"><h2><span data-l="fr">Activités scientifiques et certifications</span><span data-l="en">Academic service &amp; certifications</span></h2></div>
+    <div class="cards-3">
+      <div class="card reveal">
+        <h3 class="sub"><span data-l="fr">Relecture et comités</span><span data-l="en">Reviewing &amp; committees</span></h3>
+        <ul class="list">
+          <li><span data-l="fr">Relectrice</span><span data-l="en">Reviewer</span>, <a href="https://link.springer.com/journal/10044" target="_blank" rel="noopener">Pattern Analysis and Applications</a> <span class="d">(Springer, Q2)</span></li>
+          <li><span data-l="fr">Relectrice</span><span data-l="en">Reviewer</span>, <a href="https://www.worldscientific.com/worldscinet/ijcia" target="_blank" rel="noopener">Int. J. of Computational Intelligence and Applications</a> <span class="d">(World Scientific, Q3)</span></li>
+          <li><span data-l="fr">Comité scientifique</span><span data-l="en">Scientific committee</span>, IEEE SETIT 2022</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3 class="sub"><span data-l="fr">Organisation</span><span data-l="en">Organisation</span></h3>
+        <ul class="list">
+          <li><span data-l="fr">Comité d'organisation</span><span data-l="en">Organising committee</span>, SETIT 2016 · 2018 · 2022</li>
+          <li><span data-l="fr">Dossier d'accréditation du cycle ingénieur, ISSAT Sousse (2022)</span><span data-l="en">Engineering programme accreditation file, ISSAT Sousse (2022)</span></li>
+          <li><span data-l="fr">« 24 Heures d'innovation », ISSAT Sousse (2021)</span><span data-l="en">"24 Hours of Innovation", ISSAT Sousse (2021)</span></li>
+        </ul>
+        <details class="more-list">
+          <summary><span data-l="fr">Voir plus</span><span data-l="en">Show more</span></summary>
+          <ul class="list">
+            <li><span data-l="fr">Workshop international « Machine Learning &amp; Python », Monastir (2019)</span><span data-l="en">International workshop "Machine Learning &amp; Python", Monastir (2019)</span></li>
+            <li><span data-l="fr">27<sup>es</sup> Journées SETIT : formation Deep Learning, Sousse (2018)</span><span data-l="en">27th SETIT Days: Deep Learning training, Sousse (2018)</span></li>
+            <li><span data-l="fr">26<sup>es</sup> Journées SETIT : formation LaTeX, Sousse (2015)</span><span data-l="en">26th SETIT Days: LaTeX training, Sousse (2015)</span></li>
+          </ul>
+        </details>
+      </div>
+      <div class="card reveal">
+        <h3 class="sub">Certifications</h3>
+        <ul class="list">
+          <li>Cisco CCNA 3 <span class="d">· 2024</span></li>
+          <li>Microsoft Azure AI Fundamentals <span class="d">· 2023</span></li>
+          <li>Cisco CCNA 2 <span class="d">· 2021</span></li>
+          <li>Scrum Master Certified (SMC) <span class="d">· 2021</span></li>
+          <li>Scrum Fundamentals Certified (SFC) <span class="d">· 2021</span></li>
+          <li>Cisco CCNA 1 <span class="d">· 2020</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub" style="margin-top:40px"><span data-l="fr">Références</span><span data-l="en">References</span></h3>
+    <div class="refs">
+      <div class="card ref reveal"><h3><a href="https://www.emse.fr/~debayle/" target="_blank" rel="noopener">Pr Johan Debayle</a></h3><p><span data-l="fr">Professeur, Mines Saint-Étienne, France</span><span data-l="en">Professor, Mines Saint-Étienne, France</span></p></div>
+      <div class="card ref reveal"><h3>Pr Mohamed Salim Bouhlel</h3><p><span data-l="fr">Professeur, Université de Sfax (ISBS), Tunisie</span><span data-l="en">Professor, University of Sfax (ISBS), Tunisia</span></p></div>
+      <div class="card ref reveal"><h3>Pr Borhen Louhichi</h3><p><span data-l="fr">Professeur, ISSAT Sousse, Tunisie</span><span data-l="en">Professor, ISSAT Sousse, Tunisia</span></p></div>
+      <div class="card ref reveal"><h3>Dr Habiba Loukil</h3><p><span data-l="fr">Maître de conférences, ISGI Sfax, Tunisie</span><span data-l="en">Associate Professor, ISGI Sfax, Tunisia</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div>
+        <h2><span data-l="fr">Collaborons</span><span data-l="en">Let's collaborate</span></h2>
+        <p><span data-l="fr">Projets de recherche, encadrement, relecture ou enseignement : écrivez-moi.</span><span data-l="en">Research projects, supervision, reviewing or teaching: get in touch.</span></p>
+      </div>
+      <div class="lines">
+        <a href="mailto:ellouminessrine@gmail.com">ellouminessrine@gmail.com</a>
+        <span><span data-l="fr">Sfax, Tunisie</span><span data-l="en">Sfax, Tunisia</span></span>
+        <a href="https://www.linkedin.com/in/nessrine-elloumi-9aa16158/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://scholar.google.com/citations?user=4HZqEK0AAAAJ&amp;hl=fr" target="_blank" rel="noopener">Google Scholar ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="yr">2026</span> Nessrine ELLOUMI · <span data-l="fr">Tous droits réservés</span><span data-l="en">All rights reserved</span></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function store(k,v){try{v===undefined?0:localStorage.setItem(k,v)}catch(e){}}
+  function read(k){try{return localStorage.getItem(k)}catch(e){return null}}
+
+  // Language
+  var titles={fr:"Nessrine ELLOUMI — Docteure en informatique",en:"Nessrine ELLOUMI — PhD in Computer Science"};
+  function setLang(l){
+    root.setAttribute("data-lang",l); root.lang=l; document.title=titles[l];
+    document.querySelectorAll("[data-set-lang]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.setLang===l)});
+    store("lang",l);
+  }
+  var q=new URLSearchParams(location.search).get("lang");
+  var saved=read("lang");
+  var guess=(navigator.language||"fr").slice(0,2)==="fr"?"fr":"en";
+  setLang(q==="en"||q==="fr"?q:(saved||guess));
+  document.querySelectorAll("[data-set-lang]").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.setLang)})});
+
+  // Theme
+  var t=read("theme"); if(t) root.setAttribute("data-theme",t);
+  document.getElementById("themeBtn").addEventListener("click",function(){
+    var dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    var n=dark?"light":"dark"; root.setAttribute("data-theme",n); store("theme",n);
+  });
+
+  // Mobile menu
+  var menu=document.getElementById("menu"),burger=document.getElementById("burger");
+  burger.addEventListener("click",function(){var o=menu.classList.toggle("open");burger.setAttribute("aria-expanded",o)});
+  menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){menu.classList.remove("open");burger.setAttribute("aria-expanded","false")})});
+
+  // Publication filter
+  document.querySelectorAll("[data-filter]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var f=b.dataset.filter;
+      document.querySelectorAll("[data-filter]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});
+      document.querySelectorAll("#pubs .pub").forEach(function(p){p.style.display=(f==="all"||p.dataset.type===f)?"":"none"});
+    });
+  });
+
+  // Reveal on scroll + active nav
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.08});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+    var links={};menu.querySelectorAll("a").forEach(function(a){links[a.getAttribute("href").slice(1)]=a});
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.toggle("active",k===e.target.id)}})},{rootMargin:"-45% 0px -50% 0px"});
+    document.querySelectorAll("section[id]").forEach(function(s){so.observe(s)});
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in")});
+  }
+  document.getElementById("yr").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
